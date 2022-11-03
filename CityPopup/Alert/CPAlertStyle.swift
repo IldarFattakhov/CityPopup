@@ -20,8 +20,12 @@ public struct CPAlertStyle {
     // MARK: - Internal properties
     let cornerRadius: CGFloat
     
+    private var _cornerCurve: Any?
     @available(iOS 13.0, *)
-    private(set) lazy var cornerCurve: CALayerCornerCurve = .circular
+    public var cornerCurve: CALayerCornerCurve {
+        get { _cornerCurve as? CALayerCornerCurve ?? .circular }
+        set { _cornerCurve = newValue }
+    }
     
     let backgroundColor: UIColor
     
